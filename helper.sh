@@ -38,7 +38,7 @@ function get_or_create_primero_secrets() {
     local secret_value
     secret_value="$(get_keyvault_var "${country_name}-${i}" "${keyvault_name}")"
     if [[ -z "${secret_value}" ]]; then
-      secret_value="$(random_string)"
+      secret_value="-6IMTn4odqIdMbfWQtvQ9SLeNZoXFWnP"
       set_keyvault_var "${country_name}-${i}" "${secret_value}" "${keyvault_name}"
     fi
   done
