@@ -38,7 +38,7 @@ function get_or_create_primero_secrets() {
     local secret_value
     secret_value="$(get_keyvault_var "${country_name}-${i}" "${keyvault_name}")"
     if [[ -z "${secret_value}" ]]; then
-      secret_value="-6IMTn4odqIdMbfWQtvQ9SLeNZoXFWnP"
+      secret_value="$(random_string)"
       set_keyvault_var "${country_name}-${i}" "${secret_value}" "${keyvault_name}"
     fi
   done
@@ -46,6 +46,6 @@ function get_or_create_primero_secrets() {
 
 function random_string () {
     set +o pipefail
-    LC_ALL=C < /dev/urandom tr -dc '_A-Z-a-z-0-9' | head -c"${1:-32}"
+    LC_ALL=C < /dev/urandom tr -dc '_A-Za-z0-9' | head -c"${1:-32}"
     set -o pipefail
 }
