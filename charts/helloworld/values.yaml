@@ -1,3 +1,2 @@
 image: mperel/helloworld
 port: 8080
-NAME: Michael

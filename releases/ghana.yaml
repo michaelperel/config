@@ -9,5 +9,3 @@ spec:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
     ref: master
-  values:
-    NAME: ghana-secret
