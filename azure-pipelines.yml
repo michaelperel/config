@@ -16,7 +16,7 @@ jobs:
     - task: AzureCLI@2
       displayName: 'Run pipeline'
       inputs:
-        azureSubscription: $(AZURE_SERVICE_CONNECTION)
+        azureSubscription: "Unicef Dev Service Principal"
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: ./onboard-scripts.sh
