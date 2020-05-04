@@ -4,7 +4,7 @@
 # If not, then create one
 # Create new release for the country
 
-set -uxo pipefail
+set -uexo pipefail
 
 # Source helper functions
 . helper.sh
