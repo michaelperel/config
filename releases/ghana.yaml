@@ -10,4 +10,4 @@ spec:
     path: charts/helloworld
     ref: master
   values:
-    NAME: ghana
+    NAME: ghana-secret

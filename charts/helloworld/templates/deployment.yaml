@@ -17,6 +17,9 @@ spec:
         image: {{ .Values.image }}
         env:
         - name: NAME
-          value: {{ .Values.NAME }}
+          valueFrom:
+            secretKeyRef:
+              name: envsecret
+              key: NAME
         ports:
         - containerPort: {{ .Values.port }}
