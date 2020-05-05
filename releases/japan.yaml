@@ -1,13 +1,13 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: "us"
-  namespace: "us"
+  name: "japan"
+  namespace: "japan"
 spec:
-  releaseName: "us"
+  releaseName: "japan"
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
     ref: master
   values:
-    COUNTRY: "us"
+    COUNTRY: "japan"
