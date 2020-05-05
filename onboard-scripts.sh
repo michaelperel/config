@@ -19,7 +19,7 @@ function main() {
     keyvault_name="${2}"
     build_number="${3}"
 
-    remove_generated_dirs "releases" "namespaces"
+    clean_generated_dirs "releases" "namespaces"
 
 
     IFS=',' read -ra con <<< "${countries}"

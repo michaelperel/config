@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function remove_generated_dirs() {
+function clean_generated_dirs() {
     local releases
     local namespaces
 
@@ -8,6 +8,7 @@ function remove_generated_dirs() {
     namespaces="${2}"
 
     rm -rf "${releases}" "${namespaces}"
+    mkdir -p "${releases}" "${namespaces}"
 }
 
 function get_keyvault_var() {
