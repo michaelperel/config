@@ -1,0 +1,11 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "${COUNTRY}"
+  namespace: "${COUNTRY}"
+spec:
+  releaseName: "${COUNTRY}"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
