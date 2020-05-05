@@ -21,15 +21,12 @@ function main() {
 
     clean_generated_dirs "releases" "namespaces"
 
-
     IFS=',' read -ra con <<< "${countries}"
     for c in "${con[@]}"; do
       get_or_create_primero_secrets "${keyvault_name}" "${c}"
-      if [[ ! -f "releases/${c}.yaml" ]]; then
-          export COUNTRY="${c}"
-          envsubst < "templates/helm-release.yaml" > "releases/${c}.yaml"
-          envsubst < "templates/namespace.yaml" > "namespaces/${c}.yaml"
-      fi
+      export COUNTRY="${c}"
+      envsubst < "templates/helm-release.yaml" > "releases/${c}.yaml"
+      envsubst < "templates/namespace.yaml" > "namespaces/${c}.yaml"
     done
 
     local did_commit
