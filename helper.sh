@@ -71,6 +71,9 @@ function git_commit_if_changes() {
     git config user.email "admin@azuredevops.com"
     git config user.name "Automated Account"
 
+    # Checking out master explicitly due to azure pipeline behaviour
+    git checkout master
+
     echo "GIT STATUS"
     git status
 
