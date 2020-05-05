@@ -44,7 +44,9 @@ function main() {
         exit 0
     fi
     echo "changes to be committed:"
-    git show
+    git show --name-only
+
+    git_push
 }
 
 main "${COUNTRIES}" "${KEYVAULT_NAME}" "${BUILD_NUMBER}"

@@ -21,3 +21,4 @@ jobs:
         BUILD_NUMBER: $(Build.BuildNumber)
         KEYVAULT_NAME: $(KEYVAULT)
         COUNTRIES: $(COUNTRIES)
+        ACCESS_TOKEN_SECRET: $(GITHUB_ACCESS_TOKEN_SECRET)

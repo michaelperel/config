@@ -92,6 +92,20 @@ function git_commit_if_changes() {
     printf -v $3 "$commitSuccess"
 }
 
+# Perform a Git push
+function git_push() {
+    # Remove http(s):// protocol from URL so we can insert PA token
+    repo_url=$(git config --get remote.origin.url)
+    repo_url="${repo_url#http://}"
+    repo_url="${repo_url#https://}"
+
+    echo "GIT PUSH: https://<ACCESS_TOKEN_SECRET>@$repo_url"
+    git push "https://$ACCESS_TOKEN_SECRET@$repo_url"
+    retVal=$? && [ $retVal -ne 0 ] && exit $retVal
+    echo "GIT STATUS"
+    git status
+}
+
 function random_string () {
     set +o pipefail
     LC_ALL=C < /dev/urandom tr -dc '_A-Za-z0-9' | head -c"${1:-32}"
