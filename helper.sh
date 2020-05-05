@@ -1,12 +1,18 @@
+#!/usr/bin/env bash
+
 function get_keyvault_var() {
   local key_name
   local keyvault_name
   key_name="${1}"
   keyvault_name="${2}"
   local key_val
-  # Will error if the key doesn't exist. Suppressing errors for now.
-  key_val="$(az keyvault secret show --name "${key_name}" --vault-name "${keyvault_name}" 2>/dev/null)"
-  echo "${key_val}" | jq -r .value
+  possibilities="$(az keyvault secret list --vault-name "${keyvault_name}" | jq -r --arg key_name "${key_name}" '.[] | select(.name==$key_name)')"
+  if [[ -z "${possibilities}" ]]; then
+      echo ""
+  else
+      key_val="$(az keyvault secret show --name "${key_name}" --vault-name "${keyvault_name}" 2>/dev/null)"
+      echo "${key_val}" | jq -r .value
+  fi
 }
 
 function set_keyvault_var() {
@@ -30,9 +36,11 @@ function ensure_set() {
 
 function get_or_create_primero_secrets() {
   local keyvault_name
-  local secrets
+  local country_name
   keyvault_name="${1}"
   country_name="${2}"
+
+  local secrets
   secrets=("secret-1" "secret-2")
   for i in "${secrets[@]}"; do
     local secret_value

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Pipeline for onboarding a new tenant.
 # First step, read from list of counties (Variable Group variable)
 # For each country, check if there exists a keyvault secret
@@ -9,13 +11,9 @@ set -uexo pipefail
 # Source helper functions
 . helper.sh
 
-echo $KEYVAULT_NAME
-
-echo $COUNTRIES
 REQUIRED_VARIABLES="secret"
-IFS=',' read -ra CON <<< "$COUNTRIES"
+IFS=',' read -ra CON <<< "${COUNTRIES}"
 for c in "${CON[@]}"; do
-  echo $c
-  get_or_create_primero_secrets $KEYVAULT_NAME $c
+  get_or_create_primero_secrets "${KEYVAULT_NAME}" "${c}"
 done
 
