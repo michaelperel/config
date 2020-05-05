@@ -14,12 +14,14 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: {{ .Values.image }}
+        image: "{{ .Values.image }}:{{ .Values.tag }}"
         env:
-        - name: NAME
+        - name: COUNTRY
+          value: "{{ .Values.COUNTRY }}"
+        - name: SECRET
           valueFrom:
             secretKeyRef:
               name: envsecret
-              key: NAME
+              key: SECRET
         ports:
         - containerPort: {{ .Values.port }}

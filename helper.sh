@@ -41,7 +41,7 @@ function get_or_create_primero_secrets() {
   country_name="${2}"
 
   local secrets
-  secrets=("name")
+  secrets=("secret")
   for i in "${secrets[@]}"; do
     local secret_value
     secret_value="$(get_keyvault_var "${country_name}-${i}" "${keyvault_name}")"

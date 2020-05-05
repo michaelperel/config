@@ -1,2 +1,4 @@
 image: mperel/helloworld
+tag: latest
 port: 8080
+COUNTRY: "default country"
