@@ -68,6 +68,8 @@ function get_or_create_primero_secrets() {
 # Second arg - "should error if there is nothing to commit" flag. Set to 0 if this behavior should be skipped and it will not error when there are no changes.
 # Third arg - variable to check if changes were commited or not. Will be set to 1 if changes were made, 0 if not.
 function git_commit_if_changes() {
+    git config user.email "admin@azuredevops.com"
+    git config user.name "Automated Account"
 
     echo "GIT STATUS"
     git status
