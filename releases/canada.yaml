@@ -1,10 +1,10 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: helloworld
-  namespace: prod
+  name: "canada"
+  namespace: "canada"
 spec:
-  releaseName: helloworld
+  releaseName: "canada"
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
