@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+function remove_generated_dirs() {
+    local releases
+    local namespaces
+
+    releases="${1}"
+    namespaces="${2}"
+
+    rm -rf "${releases}" "${namespaces}"
+}
+
 function get_keyvault_var() {
   local key_name
   local keyvault_name
