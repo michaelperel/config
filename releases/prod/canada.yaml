@@ -1,0 +1,14 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "canada-prod"
+  namespace: "canada-prod"
+spec:
+  releaseName: "canada-prod"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: "canada-prod"
+  values:
+    COUNTRY: "canada"
+    RUN_JOB: False
