@@ -1,3 +1,6 @@
+# Manually triggered when a new country is on-boarded
+# Add a new country to the variable group, and run the pipeline
+
 trigger: none
 
 pool:
