@@ -32,11 +32,11 @@ function main() {
       get_or_create_primero_secrets "${keyvault_name}" "${c}-prod"
 
       export COUNTRY="${c}"
-      envsubst < "templates/helm-release-prod.yaml" > "releases/prod/${c}.yaml"
-      envsubst < "templates/helm-release-sand.yaml" > "releases/sand/${c}.yaml"
+      envsubst < "templates/prod/helm-release.yaml" > "releases/prod/${c}.yaml"
+      envsubst < "templates/sand/helm-release.yaml" > "releases/sand/${c}.yaml"
 
-      envsubst < "templates/namespace-prod.yaml" > "namespaces/prod/${c}.yaml"
-      envsubst < "templates/namespace-sand.yaml" > "namespaces/sand/${c}.yaml"
+      envsubst < "templates/prod/namespace.yaml" > "namespaces/prod/${c}.yaml"
+      envsubst < "templates/sand/namespace.yaml" > "namespaces/sand/${c}.yaml"
     done
 
     local did_commit
