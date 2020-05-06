@@ -6,8 +6,6 @@ metadata:
 spec:
   releaseName: "canada-prod"
   forceUpgrade: true
-  rollback:
-    enable: true
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
