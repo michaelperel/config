@@ -14,7 +14,7 @@ data:
     repo_url="${repo_url#http://}"
     repo_url="${repo_url#https://}"
     echo "GIT PUSH: https://<ACCESS_TOKEN_SECRET>@$repo_url"
-    git push "https://$GIT_PAT@$repo_url" -u origin "{{ .Values.COUNTRY }}-prod"
+    git push "https://$GIT_PAT@$repo_url"
 kind: ConfigMap
 metadata:
   name: script-configmap
