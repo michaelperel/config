@@ -1,13 +1,13 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: "france"
-  namespace: "france"
+  name: "${COUNTRY}-prod"
+  namespace: "${COUNTRY}-prod"
 spec:
-  releaseName: "france"
+  releaseName: "${COUNTRY}-prod"
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
     ref: master
   values:
-    COUNTRY: "france"
+    COUNTRY: "${COUNTRY}"

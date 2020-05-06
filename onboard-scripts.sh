@@ -19,14 +19,20 @@ function main() {
     keyvault_name="${2}"
     build_number="${3}"
 
-    clean_generated_dirs "releases" "namespaces"
+    rm -rf "releases" "namespaces"
+    mkdir -p "releases/sand"
+    mkdir -p "release/prod"
+    mkdir "namespaces"
 
     IFS=',' read -ra con <<< "${countries}"
     for c in "${con[@]}"; do
       get_or_create_primero_secrets "${keyvault_name}" "${c}"
       export COUNTRY="${c}"
-      envsubst < "templates/helm-release.yaml" > "releases/${c}.yaml"
-      envsubst < "templates/namespace.yaml" > "namespaces/${c}.yaml"
+      envsubst < "templates/helm-release-prod.yaml" > "releases/prod/${c}.yaml"
+      envsubst < "templates/helm-release-sand.yaml" > "releases/sand/${c}.yaml"
+
+      envsubst < "templates/namespace-prod.yaml" > "namespaces/${c}-prod.yaml"
+      envsubst < "templates/namespace-sand.yaml" > "namespaces/${c}-sand.yaml"
     done
 
     local did_commit

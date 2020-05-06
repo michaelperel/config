@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-function clean_generated_dirs() {
-    local releases
-    local namespaces
-
-    releases="${1}"
-    namespaces="${2}"
-
-    rm -rf "${releases}" "${namespaces}"
-    mkdir -p "${releases}" "${namespaces}"
-}
-
 function get_keyvault_var() {
   local key_name
   local keyvault_name
