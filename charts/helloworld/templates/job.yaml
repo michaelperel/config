@@ -1,0 +1,35 @@
+{{ if .Values.RUN_JOB  }}
+apiVersion: v1
+data:
+  script.sh: |-
+    echo "RUNNING TEST"
+    echo "TEST Passed"
+kind: ConfigMap
+metadata:
+  name: script-configmap
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: script-job
+  name: script-job
+spec:
+  template:
+    spec:
+      containers:
+        - command:
+            - sh
+            - /opt/script/script.sh
+          image: 'alpine/git'
+          name: script
+          volumeMounts:
+            - mountPath: /opt/script
+              name: script-configmap
+              readOnly: false
+      restartPolicy: Never
+      volumes:
+        - configMap:
+            name: script-configmap
+          name: script-configmap
+{{ end }}

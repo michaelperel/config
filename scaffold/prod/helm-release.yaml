@@ -8,6 +8,7 @@ spec:
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
-    ref: master
+    ref: "${COUNTRY}-prod"
   values:
     COUNTRY: "${COUNTRY}"
+    RUN_JOB: False

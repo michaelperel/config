@@ -11,3 +11,4 @@ spec:
     ref: master
   values:
     COUNTRY: "${COUNTRY}"
+    RUN_JOB: True
