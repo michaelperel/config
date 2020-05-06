@@ -5,7 +5,6 @@ metadata:
   namespace: "${COUNTRY}-sand"
 spec:
   releaseName: "${COUNTRY}-sand"
-  forceUpgrade: true
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
