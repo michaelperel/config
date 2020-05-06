@@ -15,7 +15,7 @@ metadata:
     app: script-job
   name: script-job
   annotations:
-    rollme: {{ randAlphaNum 5 | quote }}
+    "helm.sh/hook": post-install,post-upgrade
 spec:
   template:
     spec:
