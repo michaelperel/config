@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "france-prod"
+  namespace: "france-prod"
+spec:
+  releaseName: "france-prod"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
+  values:
+    COUNTRY: "france"
