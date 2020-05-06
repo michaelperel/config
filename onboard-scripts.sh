@@ -22,7 +22,9 @@ function main() {
     rm -rf "releases" "namespaces"
     mkdir -p "releases/sand"
     mkdir -p "releases/prod"
-    mkdir "namespaces"
+
+    mkdir -p "namespaces/sand"
+    mkdir -p "namespaces/prod"
 
     IFS=',' read -ra con <<< "${countries}"
     for c in "${con[@]}"; do
@@ -33,8 +35,8 @@ function main() {
       envsubst < "templates/helm-release-prod.yaml" > "releases/prod/${c}.yaml"
       envsubst < "templates/helm-release-sand.yaml" > "releases/sand/${c}.yaml"
 
-      envsubst < "templates/namespace-prod.yaml" > "namespaces/${c}-prod.yaml"
-      envsubst < "templates/namespace-sand.yaml" > "namespaces/${c}-sand.yaml"
+      envsubst < "templates/namespace-prod.yaml" > "namespaces/prod/${c}.yaml"
+      envsubst < "templates/namespace-sand.yaml" > "namespaces/sand/${c}.yaml"
     done
 
     local did_commit
