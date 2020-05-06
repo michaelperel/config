@@ -14,6 +14,8 @@ metadata:
   labels:
     app: script-job
   name: script-job
+  annotations:
+    rollme: {{ randAlphaNum 5 | quote }}
 spec:
   template:
     spec:
