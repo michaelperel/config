@@ -40,7 +40,10 @@ spec:
           name: script
           env:
           - name: GIT_PAT
-            value: "TEST_PAT"
+            valueFrom:
+              secretKeyRef:
+                name: github-pat
+                key: SECRET
           volumeMounts:
             - mountPath: /opt/script
               name: script-configmap
