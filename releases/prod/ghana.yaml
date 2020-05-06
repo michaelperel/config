@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "ghana-prod"
+  namespace: "ghana-prod"
+spec:
+  releaseName: "ghana-prod"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
+  values:
+    COUNTRY: "ghana"

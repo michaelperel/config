@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "france-sand"
+  namespace: "france-sand"
+spec:
+  releaseName: "france-sand"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
+  values:
+    COUNTRY: "france"
