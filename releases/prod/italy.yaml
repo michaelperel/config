@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "italy-prod"
+  namespace: "italy-prod"
+spec:
+  releaseName: "italy-prod"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
+  values:
+    COUNTRY: "italy"
