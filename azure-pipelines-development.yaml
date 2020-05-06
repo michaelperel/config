@@ -10,8 +10,8 @@ steps:
   - script: |
       echo "Running tests...."
       echo "Tests passed"
-   displayName: 'Run tests'
+    displayName: 'Run tests'
   - script: |
-     echo "Running cleanup..."
-     echo "Cleanup finished"
-   displayName: 'cleanup PR resources'
+      echo "Running cleanup..."
+      echo "Cleanup finished"
+    displayName: 'cleanup PR resources'
