@@ -21,7 +21,7 @@ function main() {
 
     rm -rf "releases" "namespaces"
     mkdir -p "releases/sand"
-    mkdir -p "release/prod"
+    mkdir -p "releases/prod"
     mkdir "namespaces"
 
     IFS=',' read -ra con <<< "${countries}"
