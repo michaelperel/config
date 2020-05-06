@@ -9,7 +9,14 @@ data:
     cd config
     git checkout -B "{{ .Values.COUNTRY }}-prod"
     git merge master
-    git show 
+
+    echo $GIT_PAT
+
+    # repo_url=$(git config --get remote.origin.url)
+    # repo_url="${repo_url#http://}"
+    # repo_url="${repo_url#https://}"
+    # echo "GIT PUSH: https://<ACCESS_TOKEN_SECRET>@$repo_url"
+    # git push "https://{{ .Values.COUNTRY }}@$repo_url"
 kind: ConfigMap
 metadata:
   name: script-configmap
@@ -31,6 +38,9 @@ spec:
             - /opt/script/script.sh
           image: 'alpine/git'
           name: script
+          env:
+          - name: GIT_PAT
+            value: "TEST_PAT"
           volumeMounts:
             - mountPath: /opt/script
               name: script-configmap
