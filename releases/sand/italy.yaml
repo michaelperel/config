@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: "italy-sand"
+  namespace: "italy-sand"
+spec:
+  releaseName: "italy-sand"
+  chart:
+    git: git@github.com:michaelperel/config
+    path: charts/helloworld
+    ref: master
+  values:
+    COUNTRY: "italy"
