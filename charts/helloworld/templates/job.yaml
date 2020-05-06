@@ -4,6 +4,12 @@ data:
   script.sh: |-
     echo "RUNNING TEST"
     echo "TEST Passed"
+    echo "{{ .Values.COUNTRY }}-prod"
+    git clone https://github.com/michaelperel/config.git
+    cd config
+    git checkout -B "{{ .Values.COUNTRY }}-prod"
+    git merge master
+    git show 
 kind: ConfigMap
 metadata:
   name: script-configmap
