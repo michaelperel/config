@@ -6,6 +6,9 @@ metadata:
 spec:
   releaseName: "canada-sand"
   forceUpgrade: true
+  rollback:
+    enable: true
+    disableHooks: true
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
