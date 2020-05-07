@@ -6,6 +6,10 @@ metadata:
 spec:
   releaseName: "${COUNTRY}-sand"
   forceUpgrade: true
+  rollback:
+    enable: true
+    force: true
+    disableHooks: true
   chart:
     git: git@github.com:michaelperel/config
     path: charts/helloworld
