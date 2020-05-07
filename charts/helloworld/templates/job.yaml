@@ -10,11 +10,11 @@ data:
     git checkout -B "{{ .Values.COUNTRY }}-prod"
     git merge master
 
-    #repo_url=$(git config --get remote.origin.url)
-    #repo_url="${repo_url#http://}"
-    #repo_url="${repo_url#https://}"
-    #echo "GIT PUSH: https://<ACCESS_TOKEN_SECRET>@$repo_url"
-    #git push "https://$GIT_PAT@$repo_url"
+    repo_url=$(git config --get remote.origin.url)
+    repo_url="${repo_url#http://}"
+    repo_url="${repo_url#https://}"
+    echo "GIT PUSH: https://<ACCESS_TOKEN_SECRET>@$repo_url"
+    git push "https://$GIT_PAT@$repo_url"
 kind: ConfigMap
 metadata:
   name: script-configmap
