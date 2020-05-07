@@ -19,8 +19,8 @@ kind: ConfigMap
 metadata:
   name: script-configmap
 ---
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
   labels:
     app: script-job
@@ -28,27 +28,25 @@ metadata:
   annotations:
     "helm.sh/hook": post-install,post-upgrade
 spec:
-  template:
-    spec:
-      containers:
-        - command:
-            - sh
-            - /opt/script/script.sh
-          image: 'alpine/git'
-          name: script
-          env:
-          - name: GIT_PAT
-            valueFrom:
-              secretKeyRef:
-                name: github-pat
-                key: SECRET
-          volumeMounts:
-            - mountPath: /opt/script
-              name: script-configmap
-              readOnly: false
-      restartPolicy: Never
-      volumes:
-        - configMap:
-            name: script-configmap
+  containers:
+    - command:
+        - sh
+        - /opt/script/script.sh
+      image: 'alpine/git'
+      name: script
+      env:
+      - name: GIT_PAT
+        valueFrom:
+          secretKeyRef:
+            name: github-pat
+            key: SECRET
+      volumeMounts:
+        - mountPath: /opt/script
           name: script-configmap
+          readOnly: false
+  restartPolicy: Never
+  volumes:
+    - configMap:
+        name: script-configmap
+      name: script-configmap
 {{ end }}
