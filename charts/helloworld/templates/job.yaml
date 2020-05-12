@@ -2,9 +2,7 @@
 apiVersion: v1
 data:
   script.sh: |-
-    set -e
     echo "RUNNING TEST"
-    exit 1
     echo "TEST Passed"
     echo "{{ .Values.COUNTRY }}-prod"
     git clone https://github.com/michaelperel/config.git
